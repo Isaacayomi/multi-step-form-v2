@@ -1,19 +1,21 @@
+import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import MainContainer from "../components/MainContainer";
 import Sidebar from "../components/Sidebar";
+import ContentLayout from "../components/ContentLayout";
+import Headings from "../components/Headings";
+import Subheading from "../components/Subheading";
 
 const Infos = () => {
   return (
-    <div className="flex flex-col md:flex-row md:gap-[1.5rem] md:bg-white md:rounded-[0.625rem] md:p-[1rem] lg:gap-[6.25rem] lg:pr-[6.25rem]">
+    <ContentLayout>
       <Sidebar />
       <MainContainer>
         <div className="w-[18.4375rem] max-w-full mx-auto pt-[2rem] md:w-[28.125rem] md:max-w-full md:mx-auto">
-          <h2 className="text-darkBlue text-[1.5rem] font-bold pb-[0.56rem]  md:text-[2rem]">
-            Personal info
-          </h2>
-          <p className="text-grey pb-[1.38rem] md:text-[1rem] md:w-[28.125rem] md:max-w-full md:mx-auto">
-            Please provide your name, email, address, and phone number.
-          </p>
+          <Headings>Personal Info</Headings>
+          <Subheading>
+            Please provide your name, email address and phone number.
+          </Subheading>
 
           <form>
             <label
@@ -57,9 +59,13 @@ const Infos = () => {
             />
           </form>
         </div>
-        <Button>Next Step</Button>
+        <div className="flex justify-end">
+          <Button className="mr-[0]">
+            <Link to="/plans">Next Step</Link>
+          </Button>
+        </div>
       </MainContainer>
-    </div>
+    </ContentLayout>
   );
 };
 

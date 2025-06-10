@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useForm } from "../context/FormContext";
+
 import Button from "../components/Button";
 import MainContainer from "../components/MainContainer";
 import Sidebar from "../components/Sidebar";
@@ -7,9 +9,15 @@ import Headings from "../components/Headings";
 import Subheading from "../components/Subheading";
 
 const Infos = () => {
+  const { isActive, dispatch } = useForm();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
     <ContentLayout>
-      <Sidebar />
+      <Sidebar isActive={isActive} />
       <MainContainer>
         <div className="w-[18.4375rem] max-w-full mx-auto pt-[2rem] md:w-[28.125rem] md:max-w-full md:mx-auto">
           <Headings>Personal Info</Headings>
@@ -17,7 +25,7 @@ const Infos = () => {
             Please provide your name, email address and phone number.
           </Subheading>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <label
               htmlFor="Name"
               className="text-darkBlue text-[0.75rem] font-normal pb-[0.19rem]"
@@ -61,7 +69,9 @@ const Infos = () => {
         </div>
         <footer className="flex justify-end">
           <Button className="mr-[0]">
-            <Link to="/plans">Next Step</Link>
+            <Link to="/plans" onClick={() => dispatch({ type: "nextpage" })}>
+              Next Step
+            </Link>
           </Button>
         </footer>
       </MainContainer>

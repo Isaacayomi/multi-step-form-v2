@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import ARCADE_IMG from "../assets/Group 11.png";
 import ADVANCED_IMG from "../assets/Group 12.png";
@@ -13,10 +13,14 @@ import Subheading from "../components/Subheading";
 import PlansCard from "../components/PlansCard";
 import ToggleButton from "../components/ToggleButton";
 
+import { useForm } from "../context/FormContext";
+
 const Plans = () => {
+  const { isActive = 1, dispatch } = useForm();
+  const navigate = useNavigate();
   return (
     <ContentLayout>
-      <Sidebar />
+      <Sidebar isActive={isActive} />
       <MainContainer>
         <div className="w-[18.4375rem] max-w-full mx-auto pt-[2rem] md:w-[28.125rem] md:max-w-full md:mx-auto">
           <Headings>Select your plan</Headings>
@@ -49,11 +53,16 @@ const Plans = () => {
           <ToggleButton />
 
           <footer className="flex justify-between">
-            <button className="text-darkBlue font-medium mt-[5.75rem] ">
+            <button
+              className="text-darkBlue font-medium mt-[5.75rem]"
+              onClick={() => navigate(-1)}
+            >
               Go Back
             </button>
-            <Button className="">
-              <Link to="/addson">Next Step</Link>
+            <Button>
+              <Link to="/addson" onClick={() => dispatch({ type: "nextpage" })}>
+                Next Step
+              </Link>
             </Button>
           </footer>
         </div>

@@ -1,5 +1,4 @@
-const Sidebar = () => {
-  const isActive = 0;
+const Sidebar = ({ isActive }) => {
   const sideBarTexts = {
     0: "YOUR INFO",
     1: "SELECT PLAN",

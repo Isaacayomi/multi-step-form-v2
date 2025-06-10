@@ -1,4 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { useForm } from "../context/FormContext";
+
 import Button from "../components/Button";
 import ContentLayout from "../components/ContentLayout";
 import Sidebar from "../components/Sidebar";
@@ -6,10 +9,14 @@ import MainContainer from "../components/MainContainer";
 import Headings from "../components/Headings";
 import Subheading from "../components/Subheading";
 import AddonCard from "../components/AddonCard";
+
 const Addson = () => {
+  const { isActive = 1, dispatch } = useForm();
+  const navigate = useNavigate();
+
   return (
     <ContentLayout>
-      <Sidebar />
+      <Sidebar isActive={isActive} />
       <MainContainer>
         <div className="w-[18.4375rem] max-w-full mx-auto pt-[2rem] md:w-[28.125rem] md:max-w-full md:mx-auto">
           <Headings>Pick add-ons</Headings>
@@ -33,11 +40,19 @@ const Addson = () => {
           />
 
           <footer className="flex justify-between">
-            <button className="text-darkBlue font-medium mt-[5.75rem] ">
+            <button
+              className="text-darkBlue font-medium mt-[5.75rem]"
+              onClick={() => navigate(-1)}
+            >
               Go Back
             </button>
-            <Button className="">
-              <Link to="/checkout">Next Step</Link>
+            <Button>
+              <Link
+                to="/checkout"
+                onClick={() => dispatch({ type: "nextpage" })}
+              >
+                Next Step
+              </Link>
             </Button>
           </footer>
         </div>

@@ -37,7 +37,7 @@ const Addson = () => {
               Go Back
             </button>
             <Button className="">
-              <Link to="/addson">Next Step</Link>
+              <Link to="/checkout">Next Step</Link>
             </Button>
           </footer>
         </div>

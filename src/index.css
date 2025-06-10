@@ -5,3 +5,22 @@
 body {
   background-color: #eff5ff;
 }
+
+button {
+  outline: none;
+}
+
+button:focus {
+  background-color: #483eff;
+  outline: none;
+}
+
+input {
+  border: 1px solid #483eff;
+  outline: none;
+}
+
+input:hover,
+input:focus {
+  border: 1px solid #483eff;
+}

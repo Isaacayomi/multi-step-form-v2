@@ -12,6 +12,7 @@ export default {
         formOutline: "#D6D9E6",
         buttonBg: "#164A8A",
         purpleOutline: "#483EFF",
+        toggleBg: "#F8F9FF",
       },
       backgroundImage: {
         "mobile-sidebar-bg": "url('/src/assets/Group 25.png')",

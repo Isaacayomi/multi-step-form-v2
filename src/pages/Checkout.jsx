@@ -4,7 +4,7 @@ import ContentLayout from "../components/ContentLayout";
 import Sidebar from "../components/Sidebar";
 import MainContainer from "../components/MainContainer";
 
-function Checkout() {
+const Checkout = () => {
   return (
     <ContentLayout>
       <Sidebar />
@@ -16,6 +16,6 @@ function Checkout() {
       </MainContainer>
     </ContentLayout>
   );
-}
+};
 
 export default Checkout;

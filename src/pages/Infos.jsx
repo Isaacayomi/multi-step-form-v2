@@ -59,11 +59,11 @@ const Infos = () => {
             />
           </form>
         </div>
-        <div className="flex justify-end">
+        <footer className="flex justify-end">
           <Button className="mr-[0]">
             <Link to="/plans">Next Step</Link>
           </Button>
-        </div>
+        </footer>
       </MainContainer>
     </ContentLayout>
   );

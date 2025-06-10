@@ -1,4 +1,4 @@
-function Button({ onClick, children, className, disabled }) {
+const Button = ({ onClick, children, className, disabled }) => {
   return (
     <button
       disabled={disabled}
@@ -8,6 +8,6 @@ function Button({ onClick, children, className, disabled }) {
       {children}
     </button>
   );
-}
+};
 
 export default Button;

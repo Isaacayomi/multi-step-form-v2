@@ -11,8 +11,9 @@ import ContentLayout from "../components/ContentLayout";
 import Headings from "../components/Headings";
 import Subheading from "../components/Subheading";
 import PlansCard from "../components/PlansCard";
+import ToggleButton from "../components/ToggleButton";
 
-function Plans() {
+const Plans = () => {
   return (
     <ContentLayout>
       <Sidebar />
@@ -24,61 +25,41 @@ function Plans() {
           </Subheading>
 
           <div className=" md:flex md:flex-row md:gap-[1.12rem]">
-            <PlansCard>
-              <img
-                src={ARCADE_IMG}
-                alt="Arcade Plan"
-                className="md:pb-[2.44rem]"
-              />
-              <div>
-                <h3 className="mb-[0.44rem] text-darkBlue font-medium text-[1rem]">
-                  Arcade
-                </h3>
-                <p className="text-grey text-[0.875rem] font-normal md:pb-[1rem]">
-                  $9/mo
-                </p>
-              </div>
-            </PlansCard>
+            <PlansCard
+              src={ARCADE_IMG}
+              alt="Arcard Image"
+              heading="Arcade"
+              price="$9/mo"
+            />
 
-            <PlansCard>
-              <img
-                src={ADVANCED_IMG}
-                alt="Arcade Plan"
-                className="md:pb-[2.44rem]"
-              />
-              <div>
-                <h3 className="mb-[0.44rem] text-darkBlue font-medium text-[1rem]">
-                  Advanced
-                </h3>
-                <p className="text-grey text-[0.875rem] font-normal md:pb-[1rem]">
-                  $12/mo
-                </p>
-              </div>
-            </PlansCard>
+            <PlansCard
+              src={ADVANCED_IMG}
+              alt="Advanced Image"
+              heading="Advanced"
+              price="$12/mo"
+            />
 
-            <PlansCard>
-              <img
-                src={PRO_IMG}
-                alt="Arcade Plan"
-                className="md:pb-[2.44rem]"
-              />
-              <div>
-                <h3 className="mb-[0.44rem] text-darkBlue font-medium text-[1rem]">
-                  Pro
-                </h3>
-                <p className="text-grey text-[0.875rem] font-normal md:pb-[1rem]">
-                  $15/mo
-                </p>
-              </div>
-            </PlansCard>
+            <PlansCard
+              src={PRO_IMG}
+              alt="Pro Image"
+              heading="Pro"
+              price="$15/mo"
+            />
           </div>
-          <Link to="/addson" className="flex justify-end">
-            <Button className="mr-[0]">Next Step</Button>
-          </Link>
+          <ToggleButton />
+
+          <footer className="flex justify-between">
+            <button className="text-darkBlue font-medium mt-[5.75rem] ">
+              Go Back
+            </button>
+            <Button className="">
+              <Link to="/addson">Next Step</Link>
+            </Button>
+          </footer>
         </div>
       </MainContainer>
     </ContentLayout>
   );
-}
+};
 
 export default Plans;

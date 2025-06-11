@@ -8,6 +8,7 @@ import MainContainer from "../components/MainContainer";
 import Headings from "../components/Headings";
 import Subheading from "../components/Subheading";
 import SummaryItem from "../components/SummaryItem";
+import LoadingSpinner from "../components/LoadingSpinner";
 const Checkout = () => {
   const navigate = useNavigate();
 
@@ -75,6 +76,7 @@ const Checkout = () => {
         </p>
 
         <footer className="flex justify-between">
+          <LoadingSpinner />
           <button
             className="text-darkBlue font-medium mt-[5.75rem]"
             onClick={() => navigate(-1)}

@@ -4,9 +4,9 @@ import { useLocation } from "react-router-dom";
 const FormContext = createContext();
 
 const prices = [
-  { monthly: 9, yearly: 29 },
-  { monthly: 12, yearly: 212 },
-  { monthly: 15, yearly: 215 },
+  { monthly: 9, yearly: 90 },
+  { monthly: 12, yearly: 120 },
+  { monthly: 15, yearly: 150 },
 ];
 
 const initialState = {

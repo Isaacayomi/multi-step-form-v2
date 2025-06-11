@@ -8,8 +8,21 @@ import Headings from "../components/Headings";
 import Subheading from "../components/Subheading";
 import SummaryItem from "../components/SummaryItem";
 const Checkout = () => {
-  const { isActive = 1, dispatch } = useForm();
+  const {
+    isActive = 1,
+    click,
+    heading,
+    prices,
+    // price,
+    selectedCard,
+    dispatch,
+  } = useForm();
+
   const navigate = useNavigate();
+
+  const planPrice = click
+    ? prices[selectedCard].yearly
+    : prices[selectedCard].monthly;
   return (
     <ContentLayout>
       <Sidebar isActive={isActive} />
@@ -23,14 +36,15 @@ const Checkout = () => {
 
         <div className="bg-toggleBg w-[18.4375rem] mx-auto rounded-[0.5rem] px-[1rem] md:w-[28.125rem]">
           <p className="text-darkBlue text-[0.875rem] font-medium pt-[1rem]">
-            Arcarde (Yearly)
+            {heading} ({click ? "yr" : "mo"})
           </p>
           <p className="flex items-center justify-between  md:pb-[1.5rem]">
             <span className="underline underline-offset-[0.2rem] text-grey pb-[0.75rem] cursor-pointer hover:text-purpleOutline">
+              {/* <Link to="/plans">Change</Link> */}
               Change
             </span>
             <span className="text-darkBlue text-[0.875rem] font-bold text-right">
-              $90/yr
+              ${planPrice}/{click ? "yr" : "mo"}
             </span>
           </p>
           <div className="border-t border-grey border-opacity-[0.2043]">
@@ -39,9 +53,11 @@ const Checkout = () => {
           </div>
         </div>
         <p className="w-[18.4375rem] mx-auto flex justify-between items-center px-[1rem] pt-[1.5rem]  md:w-[28.125rem]">
-          <span className="underlinetext text-grey">Total (per year)</span>
+          <span className="underlinetext text-grey">
+            Total (per {click ? "year" : "month"})
+          </span>
           <span className="text-purpleOutline text-[1rem] font-bold text-right md:text-[1.25rem]">
-            $90/yr
+            $90/{click ? "yr" : "mo"}
           </span>
         </p>
 

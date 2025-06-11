@@ -13,14 +13,12 @@ const AddonCard = ({ label, description, price }) => {
       }
       hover:border-purpleOutline p-2 cursor-pointer mb-2 md:w-[28.125rem] relative`}
     >
-      {/* Hidden native checkbox */}
       <input
         type="checkbox"
         checked={checked}
         onChange={(e) => setChecked(e.target.checked)}
         className="w-5 h-5 opacity-0 absolute left-4"
       />
-      {/* Custom checkbox */}
       <span
         className={`w-5 h-5 flex items-center justify-center rounded-md border-2 
         ${

@@ -3,6 +3,12 @@ import { useLocation } from "react-router-dom";
 
 const FormContext = createContext();
 
+const prices = [
+  { monthly: 9, yearly: 29 },
+  { monthly: 12, yearly: 212 },
+  { monthly: 15, yearly: 215 },
+];
+
 const initialState = {
   isActive: 0,
   input: "",
@@ -13,6 +19,10 @@ const initialState = {
     email: false,
     phone: false,
   },
+  selectedCard: 0,
+  click: false,
+  heading: "Arcade",
+  price: 9,
 };
 
 function reducer(state, action) {
@@ -34,6 +44,30 @@ function reducer(state, action) {
 
     case "phoneField":
       return { ...state, phone: action.payload };
+
+    case "selectCard": {
+      return {
+        ...state,
+        heading: action.planHeading,
+        selectedCard: action.payload,
+      };
+    }
+
+    case "handleClick": {
+      const selected = prices[state.selectedCard];
+      const newPrice = selected
+        ? action.payload
+          ? selected.yearly
+          : selected.monthly
+        : 0; // fallback if selected is undefined
+
+      return {
+        ...state,
+        click: action.payload,
+        price: newPrice,
+      };
+    }
+
     default:
       return state;
   }
@@ -50,10 +84,20 @@ const pageMap = {
 const FormProvider = ({ children }) => {
   const location = useLocation();
   // console.log(location.pathname);
-  const [{ isActive, input, email, phone, errors }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [
+    {
+      isActive,
+      input,
+      email,
+      phone,
+      errors,
+      selectedCard,
+      heading,
+      price,
+      click,
+    },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   useEffect(() => {
     const pageIndex = pageMap[location.pathname] ?? 0;
@@ -65,7 +109,19 @@ const FormProvider = ({ children }) => {
 
   return (
     <FormContext.Provider
-      value={{ isActive, input, email, phone, errors, dispatch }}
+      value={{
+        isActive,
+        input,
+        email,
+        phone,
+        errors,
+        dispatch,
+        selectedCard,
+        click,
+        heading,
+        price,
+        prices,
+      }}
     >
       {children}
     </FormContext.Provider>

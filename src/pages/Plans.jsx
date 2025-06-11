@@ -16,7 +16,9 @@ import ToggleButton from "../components/ToggleButton";
 import { useForm } from "../context/FormContext";
 
 const Plans = () => {
-  const { isActive = 1, dispatch } = useForm();
+  // const [click, setClick] = useState(false);
+  // const [selectedCard, setSelectedCard] = useState(0);
+  const { isActive = 1, selectedCard, click, dispatch } = useForm();
   const navigate = useNavigate();
   return (
     <ContentLayout>
@@ -30,27 +32,54 @@ const Plans = () => {
 
           <div className=" md:flex md:flex-row md:gap-[1.12rem]">
             <PlansCard
+              index={0}
+              selectedCard={selectedCard}
+              dispatch={dispatch}
+              // setSelectedCard={setSelectedCard}
+              click={click}
               src={ARCADE_IMG}
               alt="Arcard Image"
               heading="Arcade"
-              price="$9/mo"
+              monthlyPrice={9}
+              yearlyPrice={29}
+              monthly="mo"
+              yearly="yr"
             />
 
             <PlansCard
+              index={1}
+              selectedCard={selectedCard}
+              dispatch={dispatch}
+              // setSelectedCard={setSelectedCard}
+              click={click}
               src={ADVANCED_IMG}
               alt="Advanced Image"
               heading="Advanced"
-              price="$12/mo"
+              monthlyPrice={12}
+              yearlyPrice={212}
+              monthly="mo"
+              yearly="yr"
             />
 
             <PlansCard
+              index={2}
+              selectedCard={selectedCard}
+              dispatch={dispatch}
+              // setSelectedCard={setSelectedCard}
+              click={click}
               src={PRO_IMG}
               alt="Pro Image"
               heading="Pro"
-              price="$15/mo"
+              monthlyPrice={15}
+              yearlyPrice={215}
+              monthly="mo"
+              yearly="yr"
             />
           </div>
-          <ToggleButton />
+          <ToggleButton
+            click={click}
+            onClick={() => dispatch({ type: "handleClick", payload: !click })}
+          />
 
           <footer className="flex justify-between">
             <button

@@ -25,11 +25,6 @@ const SuccessScreen = () => {
             our platform. If you ever need support, please feel free to email us
             at support@loremgaming.com
           </p>
-          <footer className="flex justify-end">
-            <Button className="mr-[0]">
-              <Link to="/">Finish</Link>
-            </Button>
-          </footer>
         </MainContainer>
       </ContentLayout>
     </div>

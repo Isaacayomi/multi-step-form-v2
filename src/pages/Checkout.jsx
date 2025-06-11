@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "../context/FormContext";
+
 import Button from "../components/Button";
 import ContentLayout from "../components/ContentLayout";
 import Sidebar from "../components/Sidebar";
@@ -8,21 +9,28 @@ import Headings from "../components/Headings";
 import Subheading from "../components/Subheading";
 import SummaryItem from "../components/SummaryItem";
 const Checkout = () => {
+  const navigate = useNavigate();
+
   const {
     isActive = 1,
     click,
     heading,
     prices,
-    // price,
+    selectedAddons,
     selectedCard,
     dispatch,
   } = useForm();
 
-  const navigate = useNavigate();
-
   const planPrice = click
     ? prices[selectedCard].yearly
     : prices[selectedCard].monthly;
+
+  const addonsTotal = selectedAddons.reduce(
+    (sum, addon) => sum + addon.price,
+    0
+  );
+
+  const total = planPrice + addonsTotal;
   return (
     <ContentLayout>
       <Sidebar isActive={isActive} />
@@ -48,8 +56,13 @@ const Checkout = () => {
             </span>
           </p>
           <div className="border-t border-grey border-opacity-[0.2043]">
-            <SummaryItem details="Online service" price="+$10/yr" />
-            <SummaryItem details="Larger storage" price="+$20/yr" />
+            {selectedAddons.map((addon) => (
+              <SummaryItem
+                key={addon.label}
+                details={addon.label}
+                price={`+$${addon.price}/${click ? "yr" : "mo"}`}
+              />
+            ))}
           </div>
         </div>
         <p className="w-[18.4375rem] mx-auto flex justify-between items-center px-[1rem] pt-[1.5rem]  md:w-[28.125rem]">
@@ -57,7 +70,7 @@ const Checkout = () => {
             Total (per {click ? "year" : "month"})
           </span>
           <span className="text-purpleOutline text-[1rem] font-bold text-right md:text-[1.25rem]">
-            $90/{click ? "yr" : "mo"}
+            ${`${Number(total)}`}/{click ? "yr" : "mo"}
           </span>
         </p>
 

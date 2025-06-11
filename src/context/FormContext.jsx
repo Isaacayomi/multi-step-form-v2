@@ -23,6 +23,8 @@ const initialState = {
   click: false,
   heading: "Arcade",
   price: 9,
+  checked: false,
+  selectedAddons: [],
 };
 
 function reducer(state, action) {
@@ -68,6 +70,12 @@ function reducer(state, action) {
       };
     }
 
+    case "checkAdds":
+      return { ...state, checked: action.payload };
+
+    case "setAddons":
+      return { ...state, selectedAddons: action.payload };
+
     default:
       return state;
   }
@@ -83,7 +91,6 @@ const pageMap = {
 
 const FormProvider = ({ children }) => {
   const location = useLocation();
-  // console.log(location.pathname);
   const [
     {
       isActive,
@@ -95,6 +102,8 @@ const FormProvider = ({ children }) => {
       heading,
       price,
       click,
+      checked,
+      selectedAddons,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -121,8 +130,11 @@ const FormProvider = ({ children }) => {
         heading,
         price,
         prices,
+        checked,
+        selectedAddons,
       }}
     >
+      {console.log(prices)}
       {children}
     </FormContext.Provider>
   );

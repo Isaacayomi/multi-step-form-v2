@@ -1,7 +1,15 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-const AddonCard = ({ label, description, price }) => {
-  const [checked, setChecked] = useState(false);
+const AddonCard = ({
+  label,
+  description,
+  price,
+  onClick,
+  onChange,
+
+  checked,
+}) => {
+  // const [checked, setChecked] = useState(false);
 
   return (
     <label
@@ -16,8 +24,11 @@ const AddonCard = ({ label, description, price }) => {
       <input
         type="checkbox"
         checked={checked}
-        onChange={(e) => setChecked(e.target.checked)}
+        onChange={(e) => onChange(e.target.checked)}
+        // onChange={onChange}
+        // onChange={(e) => setChecked(e.target.checked)}
         className="w-5 h-5 opacity-0 absolute left-4"
+        onClick={onClick}
       />
       <span
         className={`w-5 h-5 flex items-center justify-center rounded-md border-2 

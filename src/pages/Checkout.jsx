@@ -48,8 +48,7 @@ const Checkout = () => {
           </p>
           <p className="flex items-center justify-between  md:pb-[1.5rem]">
             <span className="underline underline-offset-[0.2rem] text-grey pb-[0.75rem] cursor-pointer hover:text-purpleOutline">
-              {/* <Link to="/plans">Change</Link> */}
-              Change
+              <Link to="/plans">Change</Link>
             </span>
             <span className="text-darkBlue text-[0.875rem] font-bold text-right">
               ${planPrice}/{click ? "yr" : "mo"}

@@ -9,7 +9,6 @@ import MainContainer from "../components/MainContainer";
 import Headings from "../components/Headings";
 import Subheading from "../components/Subheading";
 import AddonCard from "../components/AddonCard";
-// import { useState } from "react";
 
 const Addson = () => {
   const ADDONS = [

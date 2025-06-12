@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "../context/FormContext";
 
-import ARCADE_IMG from "../assets/Group 11.png";
-import ADVANCED_IMG from "../assets/Group 12.png";
-import PRO_IMG from "../assets/Group 13.png";
+import ARCADE_IMG from "../assets/Group-11.png";
+import ADVANCED_IMG from "../assets/Group-12.png";
+import PRO_IMG from "../assets/Group-13.png";
 
 import Button from "../components/Button";
 import Sidebar from "../components/Sidebar";
@@ -13,11 +14,7 @@ import Subheading from "../components/Subheading";
 import PlansCard from "../components/PlansCard";
 import ToggleButton from "../components/ToggleButton";
 
-import { useForm } from "../context/FormContext";
-
 const Plans = () => {
-  // const [click, setClick] = useState(false);
-  // const [selectedCard, setSelectedCard] = useState(0);
   const { isActive = 1, selectedCard, click, dispatch } = useForm();
   const navigate = useNavigate();
   return (
@@ -35,7 +32,6 @@ const Plans = () => {
               index={0}
               selectedCard={selectedCard}
               dispatch={dispatch}
-              // setSelectedCard={setSelectedCard}
               click={click}
               src={ARCADE_IMG}
               alt="Arcard Image"
@@ -65,7 +61,6 @@ const Plans = () => {
               index={2}
               selectedCard={selectedCard}
               dispatch={dispatch}
-              // setSelectedCard={setSelectedCard}
               click={click}
               src={PRO_IMG}
               alt="Pro Image"

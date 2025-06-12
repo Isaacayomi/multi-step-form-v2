@@ -1,11 +1,8 @@
-import { Link } from "react-router-dom";
-
 import SUCCESS_ICON from "../assets/Check.png";
 import ContentLayout from "../components/ContentLayout";
 import Headings from "../components/Headings";
 import MainContainer from "../components/MainContainer";
 import Sidebar from "../components/Sidebar";
-import Button from "../components/Button";
 const SuccessScreen = () => {
   return (
     <div>

@@ -16,7 +16,7 @@ export default {
         hoverBg: "#928CFF",
       },
       backgroundImage: {
-        "mobile-sidebar-bg": "url('/src/assets/Group 25.png')",
+        "mobile-sidebar-bg": "url('/src/assets/Group-25.png')",
         "desktop-sidebar-bg": "url('/src/assets/Oval.png')",
       },
       fontFamily: {

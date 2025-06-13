@@ -32,7 +32,7 @@ const PlansCard = ({
       }}
       className={`${
         isSelected ? "border-purpleOutline" : "border-formOutline"
-      } flex items-center gap-[0.88rem] border border-formOutline rounded-[0.5rem] bg-white pt-[0.88rem] pb-[1.12rem] pl-[1rem] mb-[0.75rem] hover:border-purpleOutline md:w-[8.625rem] md:flex md:flex-col md:items-start cursor-pointer`}
+      } flex items-center gap-[0.88rem] border border-formOutline rounded-[0.5rem] bg-white pt-[0.88rem] pb-[1.12rem] pl-[1rem] mb-[0.75rem] md:hover:border-purpleOutline md:w-[8.625rem] md:flex md:flex-col md:items-start cursor-pointer`}
     >
       <img src={src} alt={alt} className="md:pb-[2.44rem]" />
       <div>

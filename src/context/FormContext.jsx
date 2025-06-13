@@ -134,7 +134,7 @@ const FormProvider = ({ children }) => {
         selectedAddons,
       }}
     >
-      {console.log(prices)}
+      {/* {console.log(prices)} */}
       {children}
     </FormContext.Provider>
   );

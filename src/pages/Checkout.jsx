@@ -73,7 +73,7 @@ const Checkout = () => {
           </span>
         </p>
 
-        <footer className="flex justify-between">
+        <footer className="flex justify-between px-4">
           <button
             className="text-darkBlue font-medium mt-[5.75rem]"
             onClick={() => navigate(-1)}

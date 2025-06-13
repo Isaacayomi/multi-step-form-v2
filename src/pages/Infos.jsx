@@ -12,15 +12,18 @@ const Infos = () => {
   const navigate = useNavigate();
   const { isActive, input, email, phone, errors, dispatch } = useForm();
 
+  //eslint-disable-next-line
+  const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
   function handleSubmit(e) {
     e.preventDefault();
   }
 
   function handleForm() {
     const newErrors = {
-      name: !input.trim(),
-      email: !email.trim(),
-      phone: !phone.trim(),
+      name: !input.trim() || /\d/.test(input),
+      email: !email.trim() || !email.match(mailFormat),
+      phone: !phone.trim() || phone.length !== 11,
     };
     dispatch({ type: "seterrors", payload: newErrors });
   }
@@ -48,7 +51,9 @@ const Infos = () => {
               )}
             </label>
             <input
-              className="block mb-[1rem] border border-formOutline rounded-[0.25rem] bg-white w-[18.4375rem] max-w-full mx-auto pt-[0.65rem] pb-[0.75rem] pl-[1rem] md:w-[28.125rem] md:max-w-full md:mx-auto"
+              className={`${
+                errors.name ? "border-red-500" : "border-formOutline"
+              } block mb-[1rem] border border-formOutline rounded-[0.25rem] bg-white w-[18.4375rem] max-w-full mx-auto pt-[0.65rem] pb-[0.75rem] pl-[1rem] md:w-[28.125rem] md:max-w-full md:mx-auto`}
               type="text"
               id="Name"
               placeholder="e.g. Stephen King"
@@ -70,7 +75,9 @@ const Infos = () => {
               )}
             </label>
             <input
-              className="block mb-[1rem] border border-formOutline rounded-[0.25rem] bg-white w-[18.4375rem] max-w-full mx-auto pt-[0.65rem] pb-[0.75rem] pl-[1rem] md:w-[28.125rem] md:max-w-full md:mx-auto"
+              className={`${
+                errors.email ? "border-red-500" : "border-formOutline"
+              } block mb-[1rem] border border-formOutline rounded-[0.25rem] bg-white w-[18.4375rem] max-w-full mx-auto pt-[0.65rem] pb-[0.75rem] pl-[1rem] md:w-[28.125rem] md:max-w-full md:mx-auto`}
               type="text"
               id="Email"
               placeholder="e.g. stephenking@lorem.com"
@@ -86,12 +93,14 @@ const Infos = () => {
               <span>Phone Number</span>
               {errors.phone && (
                 <span className="text-red-500 font-medium">
-                  Please enter a valid number
+                  Please enter a valid number (11 Digits)
                 </span>
               )}
             </label>
             <input
-              className="block mb-[1rem] border border-formOutline rounded-[0.25rem] bg-white w-[18.4375rem] max-w-full mx-auto pt-[0.65rem] pb-[0.75rem] pl-[1rem] md:w-[28.125rem] md:max-w-full md:mx-auto"
+              className={`${
+                errors.phone ? "border-red-500" : "border-formOutline"
+              } block mb-[1rem] border border-formOutline rounded-[0.25rem] bg-white w-[18.4375rem] max-w-full mx-auto pt-[0.65rem] pb-[0.75rem] pl-[1rem] md:w-[28.125rem] md:max-w-full md:mx-auto`}
               type="number"
               id="Phone"
               inputMode="numeric"
@@ -104,13 +113,18 @@ const Infos = () => {
             />
           </form>
         </div>
-        <footer className="flex justify-end">
+        <footer className="flex justify-end  pr-4">
           <Button
             className="mr-[0]"
             onClick={(e) => {
               e.preventDefault();
               handleForm();
-              if (input && email && phone) {
+              if (
+                input.trim() &&
+                !/\d/.test(input) &&
+                email.match(mailFormat) &&
+                phone.length === 11
+              ) {
                 dispatch({ type: "nextpage" });
                 navigate("/plans");
               }

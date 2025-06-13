@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  transition: 0.2s ease-in-out;
+}
+
 body {
   background-color: #eff5ff;
 }
@@ -11,7 +15,6 @@ button {
 }
 
 button {
-  /* background-color: #483eff; */
   outline: none;
 }
 
